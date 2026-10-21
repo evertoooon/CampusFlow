@@ -1,15 +1,31 @@
+# Android Studio / IntelliJ IDEA
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
+/.idea/caches/
+/.idea/libraries/
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+/.idea/AndroidProjectSystem.xml
+/.idea/deploymentTargetSelector.xml
+/.idea/runConfigurations.xml
+
+# Gradle e arquivos gerados
+.gradle/
+**/build/
+
+# Configuracoes locais
 local.properties
+
+# Android
+/captures/
+.externalNativeBuild/
+.cxx/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de assinatura Android
+*.jks
+*.keystore
