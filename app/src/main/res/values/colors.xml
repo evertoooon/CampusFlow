@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Identidade visual CampusFlow -->
+    <color name="cf_blue">#2563EB</color>
+    <color name="cf_blue_dark">#1E40AF</color>
+    <color name="cf_blue_light">#DBEAFE</color>
+    <color name="cf_background">#F8FAFC</color>
+    <color name="cf_white">#FFFFFF</color>
+    <color name="cf_text_primary">#0F172A</color>
+    <color name="cf_text_secondary">#64748B</color>
+    <color name="cf_border">#CBD5E1</color>
+    <color name="cf_error">#EF4444</color>
+
 </resources>
