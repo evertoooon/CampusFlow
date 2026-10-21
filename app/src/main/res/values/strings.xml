@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">CampusFlow</string>
+    <string name="app_subtitle">Seu organizador acadêmico</string>
+    <string name="welcome_title">Bem-vindo!</string>
+    <string name="welcome_subtitle">Entre para organizar suas disciplinas e atividades.</string>
+    <string name="email_hint">E-mail</string>
+    <string name="password_hint">Senha</string>
+    <string name="login_button">Entrar</string>
+    <string name="footer_text">CampusFlow • Organize seus estudos</string>
+
+    <!-- Mensagens de validação e feedback -->
+    <string name="error_empty_email">Informe seu e-mail</string>
+    <string name="error_empty_password">Informe sua senha</string>
+    <string name="toast_login_success">Login realizado com sucesso!</string>
+    <string name="toast_login_failed">E-mail ou senha incorretos</string>
+
+    <!-- Tela Principal -->
+    <string name="hello_world">Hello World!</string>
 </resources>
