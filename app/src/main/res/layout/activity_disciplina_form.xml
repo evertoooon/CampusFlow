@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cf_background"
+    android:fillViewport="true"
+    tools:context=".DisciplinaFormActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/txtTituloDisciplina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/discipline_form_title"
+            android:textColor="@color/cf_blue_dark"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/discipline_form_description"
+            android:textColor="@color/cf_text_secondary"
+            android:textSize="16sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputNomeDisciplina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="@string/discipline_name_hint"
+            app:boxBackgroundColor="@color/cf_white"
+            app:boxBackgroundMode="outline"
+            app:hintTextColor="@color/cf_blue_dark">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNomeDisciplina"
+                android:saveEnabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="56dp"
+                android:inputType="textCapSentences"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:singleLine="true"
+                android:textColor="@color/cf_text_primary"
+                android:textColorHint="@color/cf_text_secondary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/discipline_teacher_hint"
+            app:boxBackgroundColor="@color/cf_white"
+            app:boxBackgroundMode="outline"
+            app:hintTextColor="@color/cf_blue_dark">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtProfessorDisciplina"
+                android:saveEnabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="56dp"
+                android:inputType="textCapWords"
+                android:importantForAutofill="no"
+                android:singleLine="true"
+                android:textColor="@color/cf_text_primary"
+                android:textColorHint="@color/cf_text_secondary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSalvarDisciplina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:minHeight="56dp"
+            android:text="@string/discipline_save"
+            android:textAllCaps="false"
+            android:textColor="@color/cf_white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/cf_blue"
+            app:cornerRadius="12dp" />
+
+        <TextView
+            android:id="@+id/txtErroSalvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:accessibilityLiveRegion="polite"
+            android:text="@string/discipline_save_error"
+            android:textColor="@color/cf_text_primary"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVoltarDisciplinas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="56dp"
+            android:text="@string/discipline_form_back"
+            android:textAllCaps="false"
+            android:textColor="@color/cf_white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/cf_blue"
+            app:cornerRadius="12dp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExcluirDisciplina"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:minHeight="56dp"
+            android:text="@string/discipline_delete"
+            android:textAllCaps="false"
+            android:textColor="@color/cf_delete"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:strokeColor="@color/cf_delete"
+            app:cornerRadius="12dp" />
+    </LinearLayout>
+</ScrollView>

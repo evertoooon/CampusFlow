@@ -1,3 +1,62 @@
 <resources>
     <string name="app_name">CampusFlow</string>
+    <string name="app_subtitle">Seu organizador acadêmico</string>
+    <string name="welcome_title">Bem-vindo!</string>
+    <string name="welcome_subtitle">Entre para organizar suas disciplinas e atividades.</string>
+    <string name="email_hint">E-mail</string>
+    <string name="password_hint">Senha</string>
+    <string name="login_button">Entrar</string>
+    <string name="footer_text">CampusFlow • Organize seus estudos</string>
+
+    <!-- Mensagens de validação e feedback -->
+    <string name="error_empty_email">Informe seu e-mail</string>
+    <string name="error_empty_password">Informe sua senha</string>
+    <string name="toast_login_success">Login realizado com sucesso!</string>
+    <string name="toast_login_failed">E-mail ou senha incorretos</string>
+
+    <!-- Tela Principal -->
+    <string name="dashboard_subtitle">Seu planejamento acadêmico em um só lugar.</string>
+    <string name="dashboard_summary_title">Resumo acadêmico</string>
+    <string name="dashboard_pending_initial">Pendentes: 0</string>
+    <string name="dashboard_completed_initial">Concluídas: 0</string>
+    <string name="dashboard_overdue_initial">Atrasadas: 0</string>
+    <string name="dashboard_activities_title">Suas atividades</string>
+    <string name="dashboard_empty_title">Nenhuma atividade cadastrada</string>
+    <string name="dashboard_empty_description">As atividades cadastradas aparecerão aqui para você acompanhar seus estudos.</string>
+    <!-- Navegação e tela de disciplinas -->
+    <string name="disciplines_title">Disciplinas</string>
+    <string name="disciplines_open">Ver disciplinas</string>
+    <string name="disciplines_subtitle">Organize as matérias do seu semestre.</string>
+    <string name="disciplines_empty_title">Nenhuma disciplina cadastrada</string>
+    <string name="disciplines_empty_description">Suas disciplinas aparecerão aqui. Cada uma poderá reunir suas provas, trabalhos e tarefas.</string>
+    <string name="disciplines_back">Voltar ao resumo</string>
+    <!-- Formulário e persistência de disciplinas -->
+    <string name="discipline_form_title">Nova disciplina</string>
+    <string name="discipline_name_hint">Nome da disciplina (obrigatório)</string>
+    <string name="discipline_teacher_hint">Professor(a) (opcional)</string>
+    <string name="discipline_form_description">Informe o nome da disciplina. O professor é opcional.</string>
+    <string name="discipline_save">Salvar disciplina</string>
+    <string name="discipline_saving">Salvando…</string>
+    <string name="discipline_form_back">Voltar às disciplinas</string>
+    <string name="error_empty_discipline_name">Informe o nome da disciplina</string>
+    <string name="discipline_saved">Disciplina salva</string>
+    <string name="discipline_save_error">Não foi possível salvar. Seus campos foram mantidos; tente novamente.</string>
+    <string name="disciplines_loading">Carregando disciplinas…</string>
+    <string name="disciplines_load_error">Não foi possível carregar as disciplinas. Volte ao resumo e tente novamente.</string>
+    <string name="discipline_teacher_format">Professor(a): %1$s</string>
+    <string name="discipline_edit_title">Editar disciplina</string>
+    <string name="discipline_edit_action">Editar disciplina</string>
+    <string name="discipline_update">Atualizar disciplina</string>
+    <string name="discipline_updated">Disciplina atualizada</string>
+    <string name="discipline_loading">Carregando disciplina…</string>
+    <string name="discipline_not_found">Disciplina não encontrada. Volte à lista e tente novamente.</string>
+    <string name="discipline_load_error">Não foi possível carregar a disciplina. Volte à lista e tente novamente.</string>
+    <string name="discipline_delete">Excluir disciplina</string>
+    <string name="discipline_delete_title">Excluir disciplina?</string>
+    <string name="discipline_delete_confirmation">Deseja excluir a disciplina “%1$s”? Esta ação não pode ser desfeita.</string>
+    <string name="discipline_delete_cancel">Cancelar</string>
+    <string name="discipline_delete_confirm">Excluir</string>
+    <string name="discipline_deleting">Excluindo…</string>
+    <string name="discipline_deleted">Disciplina excluída</string>
+    <string name="discipline_delete_error">Não foi possível excluir a disciplina. Tente novamente.</string>
 </resources>

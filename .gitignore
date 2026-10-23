@@ -29,3 +29,4 @@ Thumbs.db
 # Arquivos de assinatura Android
 *.jks
 *.keystore
+/.idea/deviceManager.xml
