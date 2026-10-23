@@ -29,6 +29,17 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".DisciplinasActivity"
+            android:exported="false"
+            android:label="@string/disciplines_title" />
+
+        <activity
+            android:name=".DisciplinaFormActivity"
+            android:exported="false"
+            android:label="@string/discipline_form_title"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>
