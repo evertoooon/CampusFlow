@@ -35,3 +35,7 @@ A entrega foi imediata para horários de hoje já atingidos, com o aplicativo at
 ## Conferência com Gemini
 
 Gemini revisou o teste somente em leitura, destacou o uso do publicador real, o histórico e o cancelamento, sem apontar falha concreta. Concordamos em separar resolução do PendingIntent de gesto humano e avaliação visual. A sugestão dele de disparar reconciliação/broadcast pode validar o reagendamento, mas não substitui reiniciar realmente o Android; esse limite permanece explícito.
+
+## Continuação — reinício real validado
+
+O caminho de lembrete personalizado foi preparado para três minutos adiante e o Android realmente reiniciado (BOOT_COUNT 4→5). A notificação foi encontrada no serviço do sistema antes de abrir o app ou iniciar o runner após o boot. A fase verificar passou, conferindo mesmo UUID do WorkManager, publicação após boot/horário e marcação de entrega. Dados temporários removidos; seis disciplinas e quatorze atividades originais preservadas. Detalhes e limites em [reinicio-lembrete-real.md](reinicio-lembrete-real.md). Esse resultado não equivale a validar os automáticos das 9h sob reinício/Doze/API26.
