@@ -99,3 +99,7 @@ apontou falhas concretas no código revisado. Depois foi acrescentada a
 reprogramação forçada de trabalhos automáticos ao receber mudança manual do
 relógio, mantendo os alvos e o histórico; o build e a instrumentação finais já
 incluem esse ajuste.
+
+## Continuação em 02/11/2026 — publicação real
+
+O teste NotificacaoRealTest usou o publicador e o WorkManager reais: dois avisos de véspera/atraso publicados no Android, textos e histórico conferidos, PendingIntent abriu o ID correto, conclusão cancelou o aviso. OK (1 test), 18,189 s. Backup antes/depois preservou seis disciplinas e quatorze atividades. Isso amplia a cobertura anterior com publicador simulado; gesto humano, aparência/TalkBack, reinício, Doze e API26 continuam pendentes. Detalhes em [notificacoes-reais.md](notificacoes-reais.md).
