@@ -39,3 +39,7 @@ Gemini revisou o teste somente em leitura, destacou o uso do publicador real, o 
 ## Continuação — reinício real validado
 
 O caminho de lembrete personalizado foi preparado para três minutos adiante e o Android realmente reiniciado (BOOT_COUNT 4→5). A notificação foi encontrada no serviço do sistema antes de abrir o app ou iniciar o runner após o boot. A fase verificar passou, conferindo mesmo UUID do WorkManager, publicação após boot/horário e marcação de entrega. Dados temporários removidos; seis disciplinas e quatorze atividades originais preservadas. Detalhes e limites em [reinicio-lembrete-real.md](reinicio-lembrete-real.md). Esse resultado não equivale a validar os automáticos das 9h sob reinício/Doze/API26.
+
+## Continuação — fonte ampliada e Doze
+
+Dois testes com fonte 200% aprovados no formulário/lista, com escala original restaurada. Repouso profundo curto validado para o lembrete personalizado: aviso adiado em IDLE, entregue ao sair, antes do runner; mesmo UUID e registro de entrega conferidos. Dados temporários removidos e seis disciplinas/quatorze atividades preservadas. Nenhuma alteração de produção. Detalhes e limites em [fonte-ampliada-e-doze.md](fonte-ampliada-e-doze.md).
