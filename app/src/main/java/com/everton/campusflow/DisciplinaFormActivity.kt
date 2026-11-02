@@ -121,13 +121,14 @@ class DisciplinaFormActivity : AppCompatActivity() {
                         },
                     )
                     txtErro.visibility = if (
-                        estado.erro || estado.erroCarga || estado.inexistente || estado.carregando || estado.erroExclusao
+                        estado.erro || estado.erroCarga || estado.inexistente || estado.carregando || estado.erroExclusao || estado.exclusaoBloqueada
                     ) View.VISIBLE else View.GONE
                     txtErro.setText(
                         when {
                             estado.inexistente -> R.string.discipline_not_found
                             estado.erroCarga -> R.string.discipline_load_error
                             estado.carregando -> R.string.discipline_loading
+                            estado.exclusaoBloqueada -> R.string.discipline_has_activities
                             estado.erroExclusao -> R.string.discipline_delete_error
                             else -> R.string.discipline_save_error
                         },

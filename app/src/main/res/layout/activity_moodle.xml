@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@color/cf_background" android:importantForAutofill="noExcludeDescendants">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="24dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/moodle_title" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/cf_blue_dark" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="@string/moodle_explanation" android:textSize="16sp" android:textColor="@color/cf_text_primary" />
+        <TextView android:id="@+id/estadoConexaoMoodle" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="16sp" android:textColor="@color/cf_text_primary" android:accessibilityLiveRegion="polite" android:saveEnabled="false" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnConflitosMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:text="@string/moodle_conflict_title" android:textAllCaps="false" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnAtualizarConexaoMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:text="@string/moodle_sync_now" android:textAllCaps="false" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnDesconectarMoodle"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="56dp" android:text="@string/moodle_disconnect" android:textAllCaps="false" />
+        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchSegundoPlanoMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:saveEnabled="false" android:text="@string/moodle_background_option" />
+        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchAvisarNovasMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:saveEnabled="false" android:text="@string/moodle_news_option" />
+        <TextView android:id="@+id/txtPermissaoNovidadesMoodle" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="16sp" android:textColor="@color/cf_text_primary" android:text="@string/moodle_news_permission_note" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnPermissaoNovidadesMoodle"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="56dp" android:text="@string/moodle_news_permission_button" android:textAllCaps="false" />
+        <com.google.android.material.textfield.TextInputLayout android:id="@+id/inputUsuarioMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp"
+            android:hint="@string/moodle_user" app:boxBackgroundMode="outline" app:boxBackgroundColor="@color/cf_white">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtUsuarioMoodle"
+                android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+                android:saveEnabled="false" android:textColor="@color/cf_text_primary" android:importantForAutofill="no" android:inputType="textNoSuggestions"
+                android:singleLine="true" android:imeOptions="actionNext" android:maxLength="200" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout android:id="@+id/inputSenhaMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp"
+            android:hint="@string/moodle_password" app:boxBackgroundMode="outline" app:boxBackgroundColor="@color/cf_white">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtSenhaMoodle"
+                android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+                android:saveEnabled="false" android:textColor="@color/cf_text_primary" android:importantForAutofill="no" android:inputType="textPassword"
+                android:singleLine="true" android:imeOptions="actionDone" android:maxLength="512" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnVerificarMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:layout_marginTop="20dp" android:text="@string/moodle_verify" android:textAllCaps="false" app:backgroundTint="@color/cf_blue" />
+        <TextView android:id="@+id/txtResultadoMoodle" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:accessibilityLiveRegion="polite" android:saveEnabled="false"
+            android:textSize="16sp" android:textColor="@color/cf_text_primary" />
+        <LinearLayout android:id="@+id/selecoesMoodle" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical" android:saveEnabled="false" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnConsultarMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:visibility="gone" android:text="@string/moodle_preview_button" android:textAllCaps="false" />
+        <TextView android:id="@+id/previaMoodle" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="16sp" android:textColor="@color/cf_text_primary" android:saveEnabled="false" android:accessibilityLiveRegion="polite" />
+        <LinearLayout android:id="@+id/professoresMoodle" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical" android:saveEnabled="false" />
+        <com.google.android.material.checkbox.MaterialCheckBox android:id="@+id/atualizarConclusoesMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp"
+            android:visibility="gone" android:saveEnabled="false" android:text="@string/moodle_update_completion" />
+        <com.google.android.material.checkbox.MaterialCheckBox android:id="@+id/acompanharMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp"
+            android:visibility="gone" android:saveEnabled="false" android:text="@string/moodle_follow" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnImportarMoodle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:visibility="gone" android:text="@string/moodle_import_button" android:textAllCaps="false" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnLimparMoodle"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:minHeight="56dp" android:text="@string/moodle_clear" android:textAllCaps="false" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnVoltarMoodle"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="56dp" android:text="@string/disciplines_back" android:textAllCaps="false" />
+    </LinearLayout>
+</ScrollView>

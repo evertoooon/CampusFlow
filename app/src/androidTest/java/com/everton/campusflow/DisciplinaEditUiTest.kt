@@ -14,6 +14,10 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.everton.campusflow.data.CampusFlowDatabase
 import com.everton.campusflow.data.Disciplina
+import com.everton.campusflow.data.Atividade
+import com.everton.campusflow.data.TipoAtividade
+import com.everton.campusflow.data.PrioridadeAtividade
+import java.time.LocalDate
 import com.google.android.material.textfield.TextInputEditText
 import java.util.UUID
 import kotlinx.coroutines.delay
@@ -119,6 +123,35 @@ class DisciplinaEditUiTest {
             "DELETE FROM disciplinas WHERE id = ? OR nome IN (?, ?)",
             arrayOf<Any>(id, tag, "$tag editada"),
         )
+    }
+
+    @Test
+    fun disciplinaComAtividadeMostraBloqueioSemApagarDados() = runBlocking<Unit> {
+        val tag = "teste-vinculo-${UUID.randomUUID()}"
+        val id = dao.inserir(Disciplina(nome = tag))
+        val atividades = db.atividadeDao()
+        val atividadeId = atividades.inserir(Atividade(
+            titulo = tag, disciplinaId = id, tipo = TipoAtividade.TAREFA,
+            prazoEpochDay = LocalDate.of(2026, 10, 30).toEpochDay(),
+            prioridade = PrioridadeAtividade.MEDIA,
+        ))
+        try {
+            abrir(id).use { scenario ->
+                aguardar(scenario) { it.findViewById<Button>(R.id.btnExcluirDisciplina).isEnabled }
+                scenario.onActivity { it.findViewById<Button>(R.id.btnExcluirDisciplina).performClick() }
+                onView(withText(R.string.discipline_delete_confirm)).inRoot(isDialog()).perform(click())
+                aguardar(scenario) {
+                    it.findViewById<TextView>(R.id.txtErroSalvar).text.toString() ==
+                        context.getString(R.string.discipline_has_activities)
+                }
+                scenario.onActivity { assertTrue(it.findViewById<Button>(R.id.btnSalvarDisciplina).isEnabled) }
+                assertNotNull(dao.buscarPorId(id))
+                assertNotNull(atividades.buscarPorId(atividadeId))
+            }
+        } finally {
+            atividades.excluirPorId(atividadeId)
+            removerSomenteFixture(id, tag)
+        }
     }
 
     @Test

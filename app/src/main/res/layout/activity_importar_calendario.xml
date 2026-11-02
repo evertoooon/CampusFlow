@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@color/cf_background">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="24dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/import_title" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/cf_blue_dark" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="@string/import_explanation" android:textSize="16sp" android:textColor="@color/cf_text_primary" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnEscolherCalendario"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:layout_marginTop="16dp" android:text="@string/import_choose_file" android:textAllCaps="false" app:backgroundTint="@color/cf_blue" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnDisciplinaImportacao"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:text="@string/discipline_form_title" android:textAllCaps="false" app:backgroundTint="@color/cf_blue" />
+        <TextView android:id="@+id/txtStatusImportacao" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite" android:textSize="16sp" android:textColor="@color/cf_text_primary" android:layout_marginTop="12dp" />
+        <LinearLayout android:id="@+id/listaPreviaCalendario" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical" />
+        <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/switchImportarLembretes"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:saveEnabled="false" android:text="@string/import_reminders" android:textColor="@color/cf_text_primary" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/import_reminder_rules" android:textSize="16sp" android:textColor="@color/cf_text_secondary" />
+        <TextView android:id="@+id/txtPermissaoImportacao" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="16sp" android:textColor="@color/cf_text_primary" android:visibility="gone" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnPermissaoImportacao"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:text="@string/reminder_permission_button" android:textAllCaps="false" android:visibility="gone" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnImportarEventos"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
+            android:layout_marginTop="16dp" android:text="@string/import_confirm" android:textAllCaps="false" app:backgroundTint="@color/cf_blue" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnVoltarImportacao"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="56dp" android:text="@string/activity_back" android:textAllCaps="false" />
+    </LinearLayout>
+</ScrollView>

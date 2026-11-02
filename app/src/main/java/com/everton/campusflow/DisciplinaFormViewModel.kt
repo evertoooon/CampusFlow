@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.everton.campusflow.data.CampusFlowDatabase
 import com.everton.campusflow.data.Disciplina
 import com.everton.campusflow.data.DisciplinaDao
+import com.everton.campusflow.data.ResultadoExclusaoDisciplina
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -25,6 +26,7 @@ data class DisciplinaSaveState(
     val excluida: Boolean = false,
     val excluindo: Boolean = false,
     val erroExclusao: Boolean = false,
+    val exclusaoBloqueada: Boolean = false,
 )
 
 class DisciplinaFormViewModel internal constructor(
@@ -94,7 +96,7 @@ class DisciplinaFormViewModel internal constructor(
         val atual = _estado.value
         if (!atual.pronto || atual.salvando || atual.salva || atual.excluida || nome.isBlank()) return
         atualizarRascunho(nome, professor)
-        _estado.value = _estado.value.copy(salvando = true, erro = false, erroExclusao = false)
+        _estado.value = _estado.value.copy(salvando = true, erro = false, erroExclusao = false, exclusaoBloqueada = false)
         viewModelScope.launch {
             try {
                 val disciplina = Disciplina(
@@ -123,14 +125,23 @@ class DisciplinaFormViewModel internal constructor(
         val id = disciplinaId ?: return
         val atual = _estado.value
         if (id <= 0 || !atual.pronto || atual.salvando || atual.salva || atual.excluida) return
-        _estado.value = atual.copy(salvando = true, excluindo = true, erro = false, erroExclusao = false)
+        _estado.value = atual.copy(salvando = true, excluindo = true, erro = false, erroExclusao = false, exclusaoBloqueada = false)
         viewModelScope.launch {
             try {
-                if (dao.excluirPorId(id) != 1) {
-                    _estado.value = _estado.value.copy(
-                        salvando = false, excluindo = false, pronto = false, inexistente = true,
-                    )
-                    return@launch
+                when (dao.excluirSeSemAtividades(id)) {
+                    ResultadoExclusaoDisciplina.COM_ATIVIDADES -> {
+                        _estado.value = _estado.value.copy(
+                            salvando = false, excluindo = false, exclusaoBloqueada = true,
+                        )
+                        return@launch
+                    }
+                    ResultadoExclusaoDisciplina.INEXISTENTE -> {
+                        _estado.value = _estado.value.copy(
+                            salvando = false, excluindo = false, pronto = false, inexistente = true,
+                        )
+                        return@launch
+                    }
+                    ResultadoExclusaoDisciplina.EXCLUIDA -> Unit
                 }
                 _estado.value = _estado.value.copy(salvando = false, excluindo = false, excluida = true)
             } catch (cancelled: CancellationException) {

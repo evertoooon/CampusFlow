@@ -1,0 +1,201 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 4,
+    "identityHash": "538bb72d9408997f3b93df39d4f29218",
+    "entities": [
+      {
+        "tableName": "disciplinas",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT NOT NULL, `professor` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "professor",
+            "columnName": "professor",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "atividades",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `titulo` TEXT NOT NULL, `disciplinaId` INTEGER NOT NULL, `tipo` TEXT NOT NULL, `prazoEpochDay` INTEGER NOT NULL, `prioridade` TEXT NOT NULL, `concluida` INTEGER NOT NULL, `descricao` TEXT NOT NULL, `lembretesAutomaticos` INTEGER NOT NULL DEFAULT 0, `avisoAtrasoDia` INTEGER, `lembretesAtivadosEm` INTEGER, `lembreteEpochMillis` INTEGER, `lembreteEnviado` INTEGER NOT NULL DEFAULT 0, FOREIGN KEY(`disciplinaId`) REFERENCES `disciplinas`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "titulo",
+            "columnName": "titulo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "disciplinaId",
+            "columnName": "disciplinaId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tipo",
+            "columnName": "tipo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "prazoEpochDay",
+            "columnName": "prazoEpochDay",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "prioridade",
+            "columnName": "prioridade",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "concluida",
+            "columnName": "concluida",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descricao",
+            "columnName": "descricao",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lembretesAutomaticos",
+            "columnName": "lembretesAutomaticos",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "avisoAtrasoDia",
+            "columnName": "avisoAtrasoDia",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "lembretesAtivadosEm",
+            "columnName": "lembretesAtivadosEm",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "lembreteEpochMillis",
+            "columnName": "lembreteEpochMillis",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "lembreteEnviado",
+            "columnName": "lembreteEnviado",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_atividades_disciplinaId",
+            "unique": false,
+            "columnNames": [
+              "disciplinaId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_atividades_disciplinaId` ON `${TABLE_NAME}` (`disciplinaId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "disciplinas",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "disciplinaId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "entregas_automaticas",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`atividadeId` INTEGER NOT NULL, `prazo` INTEGER NOT NULL, `etapa` TEXT NOT NULL, PRIMARY KEY(`atividadeId`, `prazo`, `etapa`), FOREIGN KEY(`atividadeId`) REFERENCES `atividades`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "atividadeId",
+            "columnName": "atividadeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "prazo",
+            "columnName": "prazo",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "etapa",
+            "columnName": "etapa",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "atividadeId",
+            "prazo",
+            "etapa"
+          ]
+        },
+        "foreignKeys": [
+          {
+            "table": "atividades",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "atividadeId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '538bb72d9408997f3b93df39d4f29218')"
+    ]
+  }
+}
