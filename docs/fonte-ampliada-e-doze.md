@@ -48,3 +48,7 @@ Os 33 testes unitários e 52 instrumentados do conjunto anterior não foram repe
 ## Continuação em 03/11/2026 — API 26
 
 A imagem oficial Android 8.0 foi instalada em AVD separada (CampusFlow_API26). A bateria registrou 53 aprovados e quatro assumptions ignoradas; depois os dois testes de fonte 200% passaram em execução dirigida. Banco de testes íntegro e sem fixtures restantes. Nenhuma correção de produção necessária. Detalhes e limites em [validacao-api26.md](validacao-api26.md). A ausência de imagem/ferramentas descrita acima é histórica; a bateria básica na API mínima agora foi executada.
+
+## Continuação — leitura em voz alta com TalkBack
+
+Em 03/11/2026, Everton ativou o TalkBack 17 no Medium_Phone e aprovou manualmente login/erro de e-mail, lista/abas/identificação das atividades e formulário/rolagem/erro de título/retorno sem salvar. Backups antes/depois preservaram todas as tabelas, com seis disciplinas e quatorze atividades. Detalhes e alcance em [validacao-talkback.md](validacao-talkback.md). Essa escuta complementa os testes de fonte; não equivale a testar todas as telas e leitores.
