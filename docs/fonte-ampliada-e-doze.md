@@ -44,3 +44,7 @@ Os 33 testes unitários e 52 instrumentados do conjunto anterior não foram repe
 - Leitura e navegação com TalkBack, avaliação visual das demais telas e fonte ampliada com teclado/orientação horizontal.
 - Repouso prolongado e aparelhos com políticas de bateria de fabricantes.
 - Publicação real de uma nova tarefa no Moodle e observação da próxima sincronização, sem criar ou alterar tarefas acadêmicas reais apenas para testar.
+
+## Continuação em 03/11/2026 — API 26
+
+A imagem oficial Android 8.0 foi instalada em AVD separada (CampusFlow_API26). A bateria registrou 53 aprovados e quatro assumptions ignoradas; depois os dois testes de fonte 200% passaram em execução dirigida. Banco de testes íntegro e sem fixtures restantes. Nenhuma correção de produção necessária. Detalhes e limites em [validacao-api26.md](validacao-api26.md). A ausência de imagem/ferramentas descrita acima é histórica; a bateria básica na API mínima agora foi executada.
