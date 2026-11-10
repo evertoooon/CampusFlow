@@ -3,12 +3,12 @@ package com.everton.campusflow
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -42,10 +42,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        // O dashboard usa fundo claro, inclusive quando o sistema está no modo escuro.
-        val barsController = WindowCompat.getInsetsController(window, window.decorView)
-        barsController.isAppearanceLightStatusBars = true
-        barsController.isAppearanceLightNavigationBars = true
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(
@@ -62,12 +58,22 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnMoodle).setOnClickListener {
             startActivity(Intent(this, MoodleActivity::class.java))
         }
+        val app = application as CampusFlowApplication
+        findViewById<ImageButton>(R.id.btnAparencia).apply {
+            val escuro = app.temaEscuro()
+            setImageResource(if (escuro) R.drawable.ic_tema_sol else R.drawable.ic_tema_lua)
+            contentDescription = getString(
+                if (escuro) R.string.aparencia_ativar_clara else R.string.aparencia_ativar_escura,
+            )
+            tooltipText = contentDescription
+            setOnClickListener { app.escolherTema(!app.temaEscuro()) }
+        }
         val model = ViewModelProvider(this)[AtividadesViewModel::class.java]
         val pendentes = findViewById<TextView>(R.id.txtPendentes)
         val concluidas = findViewById<TextView>(R.id.txtConcluidas)
         val atrasadas = findViewById<TextView>(R.id.txtAtrasadas)
-        val titulo = findViewById<TextView>(R.id.txtTituloResumoAtividades)
-        val descricao = findViewById<TextView>(R.id.txtDescricaoResumoAtividades)
+        val estadoResumo = findViewById<TextView>(R.id.txtEstadoResumo)
+        val contadores = listOf(pendentes, concluidas, atrasadas)
         val tentar = findViewById<Button>(R.id.btnRecarregarResumo)
         tentar.setOnClickListener { model.carregarAtividades() }
         lifecycleScope.launch {
@@ -84,23 +90,17 @@ class MainActivity : AppCompatActivity() {
                     model.estado.collect { state ->
                         val disponivel = !state.carregando && !state.erro
                         tentar.visibility = if (state.erro) View.VISIBLE else View.GONE
+                        val visibilidadeContadores = if (disponivel) View.VISIBLE else View.GONE
+                        contadores.forEach { it.visibility = visibilidadeContadores }
+                        estadoResumo.visibility = if (disponivel) View.GONE else View.VISIBLE
                         if (disponivel) {
                             val hoje = LocalDate.ofEpochDay(state.hojeEpochDay)
                             pendentes.text = getString(R.string.dashboard_pending_count, state.pendentes.size)
                             concluidas.text = getString(R.string.dashboard_completed_count, state.concluidas.size)
                             atrasadas.text = getString(R.string.dashboard_overdue_count,
                                 state.pendentes.count { it.estaAtrasada(hoje, state.agoraEpochMillis) })
-                            val vazio = state.pendentes.isEmpty() && state.concluidas.isEmpty()
-                            titulo.setText(if (vazio) R.string.dashboard_empty_title else R.string.dashboard_has_activities)
-                            descricao.setText(if (vazio) R.string.dashboard_empty_description else R.string.dashboard_open_list)
                         } else {
-                            // Não mostra zero nem números antigos como se fossem dados confirmados.
-                            val texto = getString(if (state.erro) R.string.dashboard_counts_unavailable else R.string.activities_loading)
-                            pendentes.text = texto
-                            concluidas.text = texto
-                            atrasadas.text = texto
-                            titulo.setText(if (state.erro) R.string.activities_load_error else R.string.activities_loading)
-                            descricao.setText(if (state.erro) R.string.dashboard_retry_description else R.string.dashboard_loading_description)
+                            estadoResumo.setText(if (state.erro) R.string.activities_load_error else R.string.activities_loading)
                         }
                     }
                 }

@@ -12,7 +12,7 @@
         android:top="-110dp"
         android:left="-90dp">
         <shape android:shape="oval">
-            <solid android:color="#E0EAFF" />
+            <solid android:color="@color/cf_login_decoration_start" />
         </shape>
     </item>
 
@@ -24,7 +24,7 @@
         android:right="-70dp"
         android:gravity="top|end">
         <shape android:shape="oval">
-            <solid android:color="#EEF2FF" />
+            <solid android:color="@color/cf_login_decoration_end" />
         </shape>
     </item>
 
@@ -36,7 +36,7 @@
         android:right="-90dp"
         android:gravity="bottom|end">
         <shape android:shape="oval">
-            <solid android:color="#EBF3FE" />
+            <solid android:color="@color/cf_login_decoration_bottom" />
         </shape>
     </item>
 </layer-list>

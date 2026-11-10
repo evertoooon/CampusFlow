@@ -8,7 +8,6 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Lifecycle
@@ -30,9 +29,6 @@ class DisciplinaFormActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_disciplina_form)
 
-        val barsController = WindowCompat.getInsetsController(window, window.decorView)
-        barsController.isAppearanceLightStatusBars = true
-        barsController.isAppearanceLightNavigationBars = true
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val safeArea = insets.getInsets(

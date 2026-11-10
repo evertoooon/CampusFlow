@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 
 class LoginActivity : AppCompatActivity() {
@@ -19,9 +18,6 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
-        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
-        windowInsetsController.isAppearanceLightStatusBars = true
-        windowInsetsController.isAppearanceLightNavigationBars = true
 
         val mainView = findViewById<android.view.View>(R.id.main)
         ViewCompat.setOnApplyWindowInsetsListener(mainView) { view, insets ->

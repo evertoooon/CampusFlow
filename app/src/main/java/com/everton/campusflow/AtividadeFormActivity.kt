@@ -17,7 +17,6 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Lifecycle
@@ -54,10 +53,6 @@ class AtividadeFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_atividade_form)
-        WindowCompat.getInsetsController(window, window.decorView).apply {
-            isAppearanceLightStatusBars = true
-            isAppearanceLightNavigationBars = true
-        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val area = insets.getInsets(WindowInsetsCompat.Type.systemBars() or
                 WindowInsetsCompat.Type.ime() or WindowInsetsCompat.Type.displayCutout())
@@ -202,7 +197,7 @@ class AtividadeFormActivity : AppCompatActivity() {
                     preenchendo = true
                     lembrar.isChecked = state.lembrar
                     findViewById<TextView>(R.id.txtExplicacaoLembrete).setText(if (state.prazoExato == null)
-                        R.string.reminder_explanation else R.string.import_reminder_rules)
+                        R.string.reminder_explanation else R.string.reminder_imported_explanation)
                     lembrar.isEnabled = editavel
                     lembrar.setText(if (state.automatico) R.string.reminder_option else R.string.reminder_legacy_option)
                     automaticos.visibility = if (state.automatico) View.GONE else View.VISIBLE
@@ -224,8 +219,8 @@ class AtividadeFormActivity : AppCompatActivity() {
                     tipo.setText(tiposTexto[tipos.indexOf(state.tipo)], false)
                     prioridade.setText(prioridadesTexto[prioridades.indexOf(state.prioridade)], false)
                     preenchendo = false
-                    prazo.text = state.prazoExato?.let { getString(R.string.import_exact_due,
-                        com.everton.campusflow.importacao.PrazosIcs.formatar(it)) } ?: state.prazo?.let { getString(R.string.activity_due_label,
+                    prazo.text = state.prazoExato?.let { getString(R.string.activity_imported_due,
+                        com.everton.campusflow.prazos.Prazos.formatar(it)) } ?: state.prazo?.let { getString(R.string.activity_due_label,
                         LocalDate.ofEpochDay(it).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))) }
                         ?: getString(R.string.activity_choose_due)
                     salvar.setText(if (state.ocupado) R.string.activity_saving else

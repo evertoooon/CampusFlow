@@ -1,7 +1,7 @@
 package com.everton.campusflow.moodle
 
 import com.everton.campusflow.data.*
-import com.everton.campusflow.importacao.PrazosIcs
+import com.everton.campusflow.prazos.Prazos
 import java.time.Instant
 import java.time.ZoneId
 
@@ -44,5 +44,5 @@ object ConciliacaoMoodle {
     }
     fun comPrazo(a: Atividade, prazo: Long, agora: Instant = Instant.now(), fuso: ZoneId = ZoneId.systemDefault()) =
         a.copy(prazoExatoEpochMillis=prazo,prazoEpochDay=Instant.ofEpochMilli(prazo).atZone(fuso).toLocalDate().toEpochDay(),
-            avisoAtrasoDia=if(a.lembretesAutomaticos) PrazosIcs.proximasNove(maxOf(agora,Instant.ofEpochMilli(prazo)),fuso) else a.avisoAtrasoDia)
+            avisoAtrasoDia=if(a.lembretesAutomaticos) Prazos.proximasNove(maxOf(agora,Instant.ofEpochMilli(prazo)),fuso) else a.avisoAtrasoDia)
 }

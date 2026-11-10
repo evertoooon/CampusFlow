@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -32,9 +31,6 @@ class AtividadesActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_atividades)
 
-        val barsController = WindowCompat.getInsetsController(window, window.decorView)
-        barsController.isAppearanceLightStatusBars = true
-        barsController.isAppearanceLightNavigationBars = true
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val safeArea = insets.getInsets(
@@ -49,9 +45,6 @@ class AtividadesActivity : AppCompatActivity() {
             startActivity(Intent(this, AtividadeFormActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnAbrirImportacao).setOnClickListener {
-            startActivity(Intent(this, ImportarCalendarioActivity::class.java))
-        }
         findViewById<Button>(R.id.btnVoltarResumoAtividades).setOnClickListener {
             finish()
         }

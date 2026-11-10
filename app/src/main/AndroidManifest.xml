@@ -4,6 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".CampusFlowApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -53,8 +54,6 @@
             android:label="@string/moodle_title" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ConflitosMoodleActivity" android:exported="false"
             android:label="@string/moodle_conflict_title" />
-        <activity android:name=".ImportarCalendarioActivity" android:exported="false"
-            android:label="@string/import_title" />
         <receiver android:name=".lembretes.RelogioLembretesReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />

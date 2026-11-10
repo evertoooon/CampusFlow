@@ -98,8 +98,8 @@ class AtividadesAdapter(
 
             val dataFormatada = LocalDate.ofEpochDay(atividade.prazoEpochDay)
                 .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-            txtPrazo.text = if (atividade.prazoExatoEpochMillis != null) context.getString(R.string.import_exact_due,
-                com.everton.campusflow.importacao.PrazosIcs.formatar(atividade.prazoExatoEpochMillis))
+            txtPrazo.text = if (atividade.prazoExatoEpochMillis != null) context.getString(R.string.activity_imported_due,
+                com.everton.campusflow.prazos.Prazos.formatar(atividade.prazoExatoEpochMillis))
             else context.getString(R.string.activity_due_label, dataFormatada)
 
             val hoje = LocalDate.ofEpochDay(hojeEpochDay)

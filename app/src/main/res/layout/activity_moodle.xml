@@ -33,7 +33,7 @@
             android:minHeight="56dp" android:text="@string/moodle_news_permission_button" android:textAllCaps="false" />
         <com.google.android.material.textfield.TextInputLayout android:id="@+id/inputUsuarioMoodle"
             android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp"
-            android:hint="@string/moodle_user" app:boxBackgroundMode="outline" app:boxBackgroundColor="@color/cf_white">
+            android:hint="@string/moodle_user" app:boxBackgroundMode="outline" app:boxBackgroundColor="@color/cf_surface">
             <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtUsuarioMoodle"
                 android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
                 android:saveEnabled="false" android:textColor="@color/cf_text_primary" android:importantForAutofill="no" android:inputType="textNoSuggestions"
@@ -41,7 +41,7 @@
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout android:id="@+id/inputSenhaMoodle"
             android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp"
-            android:hint="@string/moodle_password" app:boxBackgroundMode="outline" app:boxBackgroundColor="@color/cf_white">
+            android:hint="@string/moodle_password" app:boxBackgroundMode="outline" app:boxBackgroundColor="@color/cf_surface">
             <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtSenhaMoodle"
                 android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
                 android:saveEnabled="false" android:textColor="@color/cf_text_primary" android:importantForAutofill="no" android:inputType="textPassword"
@@ -49,7 +49,7 @@
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.button.MaterialButton android:id="@+id/btnVerificarMoodle"
             android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp"
-            android:layout_marginTop="20dp" android:text="@string/moodle_verify" android:textAllCaps="false" app:backgroundTint="@color/cf_blue" />
+            android:layout_marginTop="20dp" android:text="@string/moodle_verify" android:textAllCaps="false" android:textColor="@color/cf_white" app:backgroundTint="@color/cf_blue" />
         <TextView android:id="@+id/txtResultadoMoodle" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginTop="16dp" android:accessibilityLiveRegion="polite" android:saveEnabled="false"
             android:textSize="16sp" android:textColor="@color/cf_text_primary" />

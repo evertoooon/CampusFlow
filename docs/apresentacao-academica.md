@@ -28,7 +28,7 @@ Os lembretes ajudam o estudante a acompanhar o prazo sem escolher data e hora pa
 
 ### Slide 6 — Importação com confirmação (1:30)
 
-A importação reduz o preenchimento manual. Em Importar do Moodle UPF, Verificar acesso consulta a conta pelo serviço liberado pelo Moodle. O usuário seleciona disciplinas, consulta uma prévia e só grava ao confirmar. É possível criar uma disciplina ou vincular a uma existente. O professor é sugerido quando a API libera essa informação; pode ser conferido ou editado nas novas disciplinas. A identidade remota evita duplicações. Quando o envio é confirmado, a atividade pode ser concluída no planejamento; isso não significa nota ou aprovação. Rascunho continua pendente, e envio desconhecido não é tratado como entrega confirmada. O escopo atual são trabalhos e tarefas com prazo, sem questionários. Consultas parciais são informadas. Como alternativa, há importação de arquivo de calendário .ics, com seleção e associação à disciplina.
+A importação reduz o preenchimento manual. Em Importar do Moodle UPF, Verificar acesso consulta a conta pelo serviço liberado pelo Moodle. O usuário seleciona disciplinas, consulta uma prévia e só grava ao confirmar. É possível criar uma disciplina ou vincular a uma existente. O professor é sugerido quando a API libera essa informação; pode ser conferido ou editado nas novas disciplinas. A identidade remota evita duplicações. Quando o envio é confirmado, a atividade pode ser concluída no planejamento; isso não significa nota ou aprovação. Rascunho continua pendente, e envio desconhecido não é tratado como entrega confirmada. O escopo atual são trabalhos e tarefas com prazo, sem questionários. Consultas parciais são informadas.
 
 ### Slide 7 — Sincronização e conflitos (1:40)
 
@@ -68,8 +68,6 @@ O XML define a organização e a aparência; Kotlin trata as interações. O Vie
 | Formulário — receber avisos | Ativa lembretes opcionais. Salvar sem permitir notificações continua possível. |
 | Formulário — permitir notificações | Solicita permissão ou abre as configurações pertinentes. Permissão e canal podem impedir a exibição. |
 | Formulário legado — escolher horário / usar automáticos | Mantém lembretes personalizados antigos; a conversão para automáticos só vale ao salvar. |
-| Atividades — Importar calendário | Seleciona arquivo .ics, apresenta eventos e permite associá-los a disciplinas. |
-| Calendário — selecionar / confirmar | Importa apenas escolhas válidas e evita repetir o mesmo UID. O protótipo aceita até três eventos por importação; não expande recorrências. |
 | Moodle — Verificar acesso | Consulta a conta por HTTPS no host fixo da UPF. Os campos de credenciais são limpos; a senha não é salva. |
 | Moodle — selecionar disciplinas / vínculo | Escolhe o que consultar e se será criada uma disciplina ou usada uma existente. |
 | Moodle — Consultar selecionadas | Monta a prévia sem gravar. Permite conferir prazos, envios, docentes e restrições da consulta. |

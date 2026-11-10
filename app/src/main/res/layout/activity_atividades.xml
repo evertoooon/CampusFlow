@@ -41,11 +41,6 @@
             android:text="@string/activity_new_title" android:textAllCaps="false"
             android:textColor="@color/cf_white" app:backgroundTint="@color/cf_blue" />
 
-        <com.google.android.material.button.MaterialButton android:id="@+id/btnAbrirImportacao"
-            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:minHeight="48dp"
-            android:text="@string/import_title" android:textAllCaps="false" />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnVoltarResumoAtividades"
             style="@style/Widget.Material3.Button.OutlinedButton"

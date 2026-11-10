@@ -27,7 +27,7 @@ object PlanoAutomatico {
         LocalDate.ofEpochDay(if (etapa == EtapaAutomatica.VESPERA) diaPrazo(atividade, fuso) - 1
             else if (atividade.prazoExatoEpochMillis != null) maxOf(
                 atividade.avisoAtrasoDia ?: Long.MIN_VALUE,
-                com.everton.campusflow.importacao.PrazosIcs.proximasNove(Instant.ofEpochMilli(atividade.prazoExatoEpochMillis), fuso))
+                com.everton.campusflow.prazos.Prazos.proximasNove(Instant.ofEpochMilli(atividade.prazoExatoEpochMillis), fuso))
             else atividade.avisoAtrasoDia ?: atividade.prazoEpochDay + 1)
             .atTime(9, 0).atZone(fuso).toInstant().toEpochMilli()
 

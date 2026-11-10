@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:hint="@string/discipline_name_hint"
-            app:boxBackgroundColor="@color/cf_white"
+            app:boxBackgroundColor="@color/cf_surface"
             app:boxBackgroundMode="outline"
             app:hintTextColor="@color/cf_blue_dark">
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="@string/discipline_teacher_hint"
-            app:boxBackgroundColor="@color/cf_white"
+            app:boxBackgroundColor="@color/cf_surface"
             app:boxBackgroundMode="outline"
             app:hintTextColor="@color/cf_blue_dark">
 

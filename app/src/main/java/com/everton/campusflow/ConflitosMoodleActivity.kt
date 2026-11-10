@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.*
 import androidx.lifecycle.*
-import com.everton.campusflow.importacao.PrazosIcs
+import com.everton.campusflow.prazos.Prazos
 import com.everton.campusflow.moodle.CampoMoodle
 import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.launch
@@ -17,7 +17,6 @@ import java.time.format.DateTimeFormatter
 class ConflitosMoodleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState); enableEdgeToEdge(); setContentView(R.layout.activity_conflitos_moodle)
-        WindowCompat.getInsetsController(window,window.decorView).apply { isAppearanceLightStatusBars=true; isAppearanceLightNavigationBars=true }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v,i ->
             val a=i.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
             v.setPadding(a.left,a.top,a.right,a.bottom); i
@@ -57,8 +56,8 @@ class ConflitosMoodleActivity : AppCompatActivity() {
                 }
                 if(c.tituloPendente) campo(CampoMoodle.TITULO,R.string.moodle_conflict_field_title,a.titulo,c.tituloRemoto)
                 if(c.prazoPendente) campo(CampoMoodle.PRAZO,R.string.moodle_conflict_field_due,
-                    a.prazoExatoEpochMillis?.let(PrazosIcs::formatar)?:LocalDate.ofEpochDay(a.prazoEpochDay).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-                    c.prazoRemoto?.let(PrazosIcs::formatar)?:getString(R.string.moodle_conflict_due_required),c.prazoRemoto!=null)
+                    a.prazoExatoEpochMillis?.let(Prazos::formatar)?:LocalDate.ofEpochDay(a.prazoEpochDay).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                    c.prazoRemoto?.let(Prazos::formatar)?:getString(R.string.moodle_conflict_due_required),c.prazoRemoto!=null)
                 if(c.conclusaoPendente) campo(CampoMoodle.CONCLUSAO,R.string.moodle_conflict_field_completion,
                     getString(if(a.concluida) R.string.moodle_conflict_completed else R.string.moodle_conflict_pending),
                     getString(if(c.conclusaoRemota==true) R.string.moodle_conflict_completed else R.string.moodle_conflict_pending))

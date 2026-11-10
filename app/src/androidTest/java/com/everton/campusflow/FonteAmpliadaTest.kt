@@ -60,7 +60,7 @@ class FonteAmpliadaTest {
                 val rect=Rect()
                 assertTrue("A lista precisa continuar visível",pager.getGlobalVisibleRect(rect))
                 assertTrue("É preciso espaço para navegar nas atividades",rect.height()>=96*a.resources.displayMetrics.density)
-                for(id in listOf(R.id.btnNovaAtividade,R.id.btnAbrirImportacao,R.id.btnVoltarResumoAtividades))
+                for(id in listOf(R.id.btnNovaAtividade,R.id.btnVoltarResumoAtividades))
                     conferirTexto(a.findViewById(id))
             }
         }

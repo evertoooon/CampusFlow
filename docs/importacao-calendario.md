@@ -1,3 +1,5 @@
+> Histórico: a importação de arquivos ICS foi removida do app em 04/11/2026. Atividades já importadas foram preservadas. O conteúdo abaixo descreve a implementação anterior.
+
 # Importação local de calendário — protótipo de 28/10/2026
 
 ## O que está implementado

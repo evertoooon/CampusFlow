@@ -161,7 +161,7 @@ class AtividadeFormViewModel(application: Application, private val saved: SavedS
                         avisoAtrasoDia = if (auto) {
                             if (mesmoPrazo && atual?.lembretesAutomaticos == true) atual.avisoAtrasoDia
                             else atual?.prazoExatoEpochMillis?.let {
-                                com.everton.campusflow.importacao.PrazosIcs.proximasNove(maxOf(agora, java.time.Instant.ofEpochMilli(it)), java.time.ZoneId.systemDefault())
+                                com.everton.campusflow.prazos.Prazos.proximasNove(maxOf(agora, java.time.Instant.ofEpochMilli(it)), java.time.ZoneId.systemDefault())
                             } ?: com.everton.campusflow.lembretes.PlanoAutomatico.diaAtraso(prazoSalvo, agora, java.time.ZoneId.systemDefault())
                         } else null,
                         lembretesAtivadosEm = if (auto) {

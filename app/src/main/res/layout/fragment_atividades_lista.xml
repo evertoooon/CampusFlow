@@ -37,7 +37,7 @@
         android:text="@string/retry_button"
         android:textAllCaps="false"
         android:visibility="gone"
-        app:backgroundTint="@color/cf_blue" />
+        android:textColor="@color/cf_white" app:backgroundTint="@color/cf_blue" />
     </LinearLayout>
 
     <LinearLayout

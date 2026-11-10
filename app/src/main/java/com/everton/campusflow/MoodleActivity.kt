@@ -12,7 +12,7 @@ import androidx.core.text.HtmlCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.view.*
 import androidx.lifecycle.*
-import com.everton.campusflow.importacao.PrazosIcs
+import com.everton.campusflow.prazos.Prazos
 import com.everton.campusflow.moodle.*
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -33,9 +33,6 @@ class MoodleActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
         enableEdgeToEdge()
         setContentView(R.layout.activity_moodle)
-        WindowCompat.getInsetsController(window, window.decorView).apply {
-            isAppearanceLightStatusBars = true; isAppearanceLightNavigationBars = true
-        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val area = insets.getInsets(WindowInsetsCompat.Type.systemBars() or
                 WindowInsetsCompat.Type.displayCutout() or WindowInsetsCompat.Type.ime())
@@ -78,7 +75,7 @@ class MoodleActivity : AppCompatActivity() {
                     s.falhou -> getString(R.string.moodle_sync_failed)
                     !s.conectada -> getString(R.string.moodle_sync_off)
                     s.ultima == 0L -> getString(R.string.moodle_sync_ready)
-                    else -> getString(R.string.moodle_sync_done, PrazosIcs.formatar(s.ultima), s.novas) +
+                    else -> getString(R.string.moodle_sync_done, Prazos.formatar(s.ultima), s.novas) +
                         if(s.parcial) "\n" + getString(R.string.moodle_sync_partial) else ""
                 }
                 findViewById<Button>(R.id.btnAtualizarConexaoMoodle).isEnabled = s.conectada && !s.atualizando && !s.reconectar
@@ -147,6 +144,7 @@ class MoodleActivity : AppCompatActivity() {
             val marcado = curso.id in state.escolhas
             val check = com.google.android.material.checkbox.MaterialCheckBox(this).apply {
                 text = getString(R.string.moodle_select_course, simples(curso.nome))
+                setTextColor(getColor(R.color.cf_text_primary))
                 minHeight = (48 * resources.displayMetrics.density).toInt()
                 isChecked = marcado; isEnabled = !state.ocupado
                 setOnCheckedChangeListener { _, checked -> model.escolher(curso.id, checked, state.escolhas[curso.id]) }
@@ -157,10 +155,11 @@ class MoodleActivity : AppCompatActivity() {
                 val labels = listOf(getString(R.string.moodle_create_course)) + state.disciplinas.map {
                     getString(R.string.moodle_link_course, it.nome, it.id)
                 }
-                container.addView(Spinner(this).apply {
+                container.addView(Spinner(this, Spinner.MODE_DROPDOWN).apply {
                     contentDescription = simples(curso.nome)
                     minimumHeight = (48 * resources.displayMetrics.density).toInt()
-                    adapter = ArrayAdapter(this@MoodleActivity, android.R.layout.simple_spinner_dropdown_item, labels)
+                    setPopupBackgroundResource(R.color.cf_surface)
+                    adapter = ArrayAdapter(this@MoodleActivity, R.layout.item_opcao_disciplina_moodle, labels)
                     setSelection(ids.indexOf(state.escolhas[curso.id]).coerceAtLeast(0))
                     isEnabled = !state.ocupado && curso.id !in state.vinculados
                     onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -194,7 +193,7 @@ class MoodleActivity : AppCompatActivity() {
                         EnvioMoodle.PENDENTE -> R.string.moodle_pending
                         EnvioMoodle.DESCONHECIDO -> R.string.moodle_unknown_submission
                     })
-                    appendLine("• ${simples(t.nome)} — ${t.prazo?.let(PrazosIcs::formatar) ?: getString(R.string.moodle_no_due)} — $status")
+                    appendLine("• ${simples(t.nome)} — ${t.prazo?.let(Prazos::formatar) ?: getString(R.string.moodle_no_due)} — $status")
                 }
             }
         } }.orEmpty()
@@ -219,6 +218,7 @@ class MoodleActivity : AppCompatActivity() {
                 val input = TextInputLayout(this).apply {
                     hint = getString(R.string.moodle_professor_label)
                     boxBackgroundMode = TextInputLayout.BOX_BACKGROUND_OUTLINE
+                    boxBackgroundColor = getColor(R.color.cf_surface)
                 }
                 input.addView(TextInputEditText(input.context).apply {
                     isSaveEnabled = false
@@ -262,7 +262,6 @@ class MoodleActivity : AppCompatActivity() {
         when (val cursos = r.cursos) {
             is ConsultaMoodle.Lida -> {
                 appendLine(getString(R.string.moodle_courses_count, cursos.dados.size))
-                cursos.dados.forEach { appendLine("• ${simples(it.nome)}") }
             }
             ConsultaMoodle.NaoLiberada -> appendLine(getString(R.string.moodle_courses_unavailable))
             is ConsultaMoodle.Falhou -> appendLine(erro(cursos.motivo))
@@ -274,7 +273,7 @@ class MoodleActivity : AppCompatActivity() {
             is ConsultaMoodle.Lida -> {
                 appendLine(getString(R.string.moodle_tasks_count, tarefas.dados.size))
                 tarefas.dados.take(5).forEach {
-                    appendLine("• ${simples(it.nome)} — ${it.prazo?.let(PrazosIcs::formatar) ?: getString(R.string.moodle_no_due)}")
+                    appendLine("• ${simples(it.nome)} — ${it.prazo?.let(Prazos::formatar) ?: getString(R.string.moodle_no_due)}")
                 }
             }
             ConsultaMoodle.NaoLiberada -> appendLine(getString(R.string.moodle_tasks_unavailable))

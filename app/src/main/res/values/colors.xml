@@ -15,4 +15,10 @@
     <color name="cf_error">#EF4444</color>
 
     <color name="cf_delete">#B91C1C</color>
+    <color name="cf_surface">#FFFFFF</color>
+    <color name="cf_theme_primary">@color/cf_blue</color>
+    <color name="cf_theme_on_primary">@color/cf_white</color>
+    <color name="cf_login_decoration_start">#E0EAFF</color>
+    <color name="cf_login_decoration_end">#EEF2FF</color>
+    <color name="cf_login_decoration_bottom">#EBF3FE</color>
 </resources>

@@ -59,10 +59,6 @@ class DashboardAtividadesTest {
                 conferir(p + 1, c + 2, a)
                 scenario.recreate()
                 conferir(p + 1, c + 2, a)
-                scenario.onActivity {
-                    assertEquals(context.getString(R.string.dashboard_has_activities),
-                        it.findViewById<TextView>(R.id.txtTituloResumoAtividades).text.toString())
-                }
             }
         } finally {
             ids.forEach { dao.excluirPorId(it) }
