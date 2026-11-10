@@ -8,7 +8,6 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Lifecycle
@@ -30,9 +29,6 @@ class DisciplinaFormActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_disciplina_form)
 
-        val barsController = WindowCompat.getInsetsController(window, window.decorView)
-        barsController.isAppearanceLightStatusBars = true
-        barsController.isAppearanceLightNavigationBars = true
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val safeArea = insets.getInsets(
@@ -121,13 +117,14 @@ class DisciplinaFormActivity : AppCompatActivity() {
                         },
                     )
                     txtErro.visibility = if (
-                        estado.erro || estado.erroCarga || estado.inexistente || estado.carregando || estado.erroExclusao
+                        estado.erro || estado.erroCarga || estado.inexistente || estado.carregando || estado.erroExclusao || estado.exclusaoBloqueada
                     ) View.VISIBLE else View.GONE
                     txtErro.setText(
                         when {
                             estado.inexistente -> R.string.discipline_not_found
                             estado.erroCarga -> R.string.discipline_load_error
                             estado.carregando -> R.string.discipline_loading
+                            estado.exclusaoBloqueada -> R.string.discipline_has_activities
                             estado.erroExclusao -> R.string.discipline_delete_error
                             else -> R.string.discipline_save_error
                         },

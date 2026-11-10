@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/cf_background" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="24dp">
+        <TextView android:id="@+id/txtTituloFormAtividade" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="@string/activity_new_title"
+            android:textSize="28sp" android:textStyle="bold" android:textColor="@color/cf_blue_dark" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/activity_form_description"
+            android:textSize="16sp" android:textColor="@color/cf_text_secondary" />
+        <com.google.android.material.textfield.TextInputLayout android:id="@+id/inputTituloAtividade"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:hint="@string/activity_title_hint"
+            app:boxBackgroundMode="outline" app:boxBackgroundColor="@color/cf_surface">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtTituloAtividade"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:saveEnabled="false" android:minHeight="56dp" android:inputType="textCapSentences"
+                android:singleLine="true" android:imeOptions="actionNext" android:importantForAutofill="no"
+                android:textColor="@color/cf_text_primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:hint="@string/activity_discipline_hint"
+            app:boxBackgroundColor="@color/cf_surface">
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/seletorDisciplina"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:saveEnabled="false" android:inputType="none" android:minHeight="56dp"
+                android:importantForAutofill="no" android:textColor="@color/cf_text_primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnCadastrarDisciplinaAtividade"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="56dp" android:text="@string/discipline_form_title"
+            android:textAllCaps="false" android:visibility="gone" android:textColor="@color/cf_white" app:backgroundTint="@color/cf_blue" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:hint="@string/activity_type_hint"
+            app:boxBackgroundColor="@color/cf_surface">
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/seletorTipo"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:saveEnabled="false" android:inputType="none" android:minHeight="56dp"
+                android:importantForAutofill="no" android:textColor="@color/cf_text_primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView android:id="@+id/txtPrazoImportado" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="12dp" android:visibility="gone"
+            android:text="@string/activity_imported_edit_note" android:textSize="16sp" android:textColor="@color/cf_text_primary" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnPrazoAtividade"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="16dp" android:minHeight="56dp"
+            android:text="@string/activity_choose_due" android:textAllCaps="false"
+            android:textColor="@color/cf_blue_dark" app:strokeColor="@color/cf_border" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:hint="@string/activity_priority_hint"
+            app:boxBackgroundColor="@color/cf_surface">
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/seletorPrioridade"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:saveEnabled="false" android:inputType="none" android:minHeight="56dp"
+                android:importantForAutofill="no" android:textColor="@color/cf_text_primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="16dp"
+            android:hint="@string/activity_description_hint" app:boxBackgroundMode="outline"
+            app:boxBackgroundColor="@color/cf_surface">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtDescricaoAtividade"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:saveEnabled="false" android:minHeight="100dp" android:gravity="top|start"
+                android:inputType="textMultiLine|textCapSentences" android:importantForAutofill="no"
+                android:textColor="@color/cf_text_primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/switchLembrete"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:minHeight="56dp" android:saveEnabled="false"
+            android:text="@string/reminder_option" android:textColor="@color/cf_text_primary" />
+        <TextView android:id="@+id/txtExplicacaoLembrete" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/reminder_explanation" android:textColor="@color/cf_text_secondary"
+            android:textSize="16sp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnUsarAutomaticos"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="56dp" android:visibility="gone"
+            android:text="@string/reminder_convert" android:textAllCaps="false" />
+        <TextView android:id="@+id/txtRelogioLembrete" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" android:visibility="gone"
+            android:textSize="16sp" android:textColor="@color/cf_text_primary" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnHorarioLembrete"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="56dp" android:visibility="gone"
+            android:text="@string/reminder_choose_time" android:textAllCaps="false"
+            android:textColor="@color/cf_blue_dark" />
+        <TextView android:id="@+id/txtPermissaoLembrete" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:accessibilityLiveRegion="polite"
+            android:textSize="16sp" android:textColor="@color/cf_text_primary" android:visibility="gone" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnPermissaoLembrete"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="56dp" android:visibility="gone"
+            android:text="@string/reminder_permission_button" android:textAllCaps="false"
+            android:textColor="@color/cf_blue_dark" />
+        <TextView android:id="@+id/txtStatusFormAtividade" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="16dp"
+            android:accessibilityLiveRegion="polite" android:textSize="16sp"
+            android:textColor="@color/cf_text_primary" android:visibility="gone" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnSalvarAtividade"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:minHeight="56dp" android:text="@string/activity_save"
+            android:textAllCaps="false" android:textColor="@color/cf_white" app:backgroundTint="@color/cf_blue" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnVoltarAtividades"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="56dp"
+            android:text="@string/activity_back" android:textAllCaps="false" android:textColor="@color/cf_blue_dark" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnExcluirAtividade"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="56dp" android:layout_marginTop="16dp"
+            android:text="@string/activity_delete" android:textAllCaps="false" android:textColor="@color/cf_delete"
+            app:strokeColor="@color/cf_delete" android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

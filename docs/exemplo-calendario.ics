@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CampusFlow//Exemplo academico//PT-BR
+BEGIN:VEVENT
+UID:campusflow-exemplo-utc-2026@exemplo.local
+DTSTAMP:20261028T170000Z
+SUMMARY:Exemplo - Entrega de Mobile
+DESCRIPTION:Evento fictício para testar importação. Não representa uma entrega real.
+DTSTART:20261110T210000Z
+END:VEVENT
+BEGIN:VEVENT
+UID:campusflow-exemplo-dia-2026@exemplo.local
+DTSTAMP:20261028T170000Z
+SUMMARY:Exemplo - Revisão de conteúdo
+DESCRIPTION:Evento fictício de dia inteiro.
+DTSTART;VALUE=DATE:20261111
+END:VEVENT
+BEGIN:VEVENT
+UID:campusflow-exemplo-fuso-2026@exemplo.local
+DTSTAMP:20261028T170000Z
+SUMMARY:Exemplo - Preparar apresentação
+DESCRIPTION:Evento fictício com fuso explícito de São Paulo.
+DTSTART;TZID=America/Sao_Paulo:20261112T190000
+END:VEVENT
+END:VCALENDAR

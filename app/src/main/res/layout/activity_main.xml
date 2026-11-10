@@ -15,13 +15,31 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="@color/cf_blue_dark"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/app_name"
+                android:textColor="@color/cf_blue_dark"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnAparencia"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/aparencia_ativar_escura"
+                android:scaleType="center"
+                app:srcCompat="@drawable/ic_tema_lua" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -40,7 +58,7 @@
             android:textSize="22sp"
             android:textStyle="bold" />
 
-        <!-- Contagens iniciais; serão calculadas com os dados do Room. -->
+        <!-- Os valores reais são preenchidos a partir do Room. -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +71,7 @@
                 android:id="@+id/txtPendentes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/dashboard_pending_initial"
+                android:visibility="gone"
                 android:textColor="@color/cf_text_primary"
                 android:textSize="18sp" />
 
@@ -62,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/dashboard_completed_initial"
+                android:visibility="gone"
                 android:textColor="@color/cf_text_primary"
                 android:textSize="18sp" />
 
@@ -71,9 +89,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/dashboard_overdue_initial"
+                android:visibility="gone"
                 android:textColor="@color/cf_text_primary"
                 android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtEstadoResumo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:accessibilityLiveRegion="polite"
+                android:text="@string/activities_loading"
+                android:textColor="@color/cf_text_primary"
+                android:textSize="18sp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRecarregarResumo" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:minHeight="48dp"
+                android:text="@string/retry_button" android:textAllCaps="false"
+                android:visibility="gone" android:textColor="@color/cf_white" app:backgroundTint="@color/cf_blue" />
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -89,38 +121,24 @@
             app:backgroundTint="@color/cf_blue"
             app:cornerRadius="12dp" />
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAtividades"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/dashboard_activities_title"
-            android:textColor="@color/cf_text_primary"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="12dp"
+            android:minHeight="56dp"
+            android:text="@string/activities_open"
+            android:textAllCaps="false"
+            android:textColor="@color/cf_blue_dark"
+            android:textSize="16sp"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/cf_border" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_login_card"
-            android:orientation="vertical"
-            android:padding="20dp">
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnMoodle"
+            style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="56dp" android:layout_marginTop="12dp"
+            android:text="@string/moodle_title" android:textAllCaps="false" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/dashboard_empty_title"
-                android:textColor="@color/cf_text_primary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/dashboard_empty_description"
-                android:textColor="@color/cf_text_secondary"
-                android:textSize="16sp" />
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>

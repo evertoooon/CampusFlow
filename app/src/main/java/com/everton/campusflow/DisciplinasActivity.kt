@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -24,9 +23,6 @@ class DisciplinasActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_disciplinas)
 
-        val barsController = WindowCompat.getInsetsController(window, window.decorView)
-        barsController.isAppearanceLightStatusBars = true
-        barsController.isAppearanceLightNavigationBars = true
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val safeArea = insets.getInsets(

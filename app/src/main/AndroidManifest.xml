@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".CampusFlowApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -40,6 +43,23 @@
             android:label="@string/discipline_form_title"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".AtividadesActivity"
+            android:exported="false"
+            android:label="@string/activities_title" />
+
+        <activity android:name=".AtividadeFormActivity" android:exported="false"
+            android:label="@string/activity_new_title" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".MoodleActivity" android:exported="false"
+            android:label="@string/moodle_title" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ConflitosMoodleActivity" android:exported="false"
+            android:label="@string/moodle_conflict_title" />
+        <receiver android:name=".lembretes.RelogioLembretesReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

@@ -1,0 +1,15 @@
+<resources>
+    <color name="cf_background">#101827</color>
+    <color name="cf_surface">#192437</color>
+    <color name="cf_text_primary">#F1F5F9</color>
+    <color name="cf_text_secondary">#B8C5D9</color>
+    <color name="cf_border">#71829E</color>
+    <color name="cf_blue_dark">#AAC7FF</color>
+    <color name="cf_theme_primary">#AAC7FF</color>
+    <color name="cf_theme_on_primary">#14284D</color>
+    <color name="cf_delete">#FFB4AB</color>
+    <color name="cf_error">#FFB4AB</color>
+    <color name="cf_login_decoration_start">#172848</color>
+    <color name="cf_login_decoration_end">#1A2440</color>
+    <color name="cf_login_decoration_bottom">#15253B</color>
+</resources>
